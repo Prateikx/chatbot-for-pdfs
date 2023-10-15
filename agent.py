@@ -1,20 +1,23 @@
 import os
-from langchain.embeddings.openai import OpenAIEmbeddings
+from langchain.embeddings import VertexAIEmbeddings
 from langchain.document_loaders import PyPDFLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.vectorstores import FAISS
+from langchain.llms import VertexAI
 
 from langchain.chains import ConversationalRetrievalChain
-from langchain.llms import OpenAI
+
+# setting the environment variable `GOOGLE_APPLICATION_CREDENTIALS` to the file path
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "E:\D3VTech\d3v-chat-bot-poc\d3v-sandbox-364105-4d1d086de08a.json"
 
 
 class Agent:
-    def __init__(self, openai_api_key: str):
+    def __init__(self):
 
-        self.embeddings = OpenAIEmbeddings(openai_api_key=openai_api_key)
+        self.embeddings = VertexAIEmbeddings(temperature=0)
         self.text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
 
-        self.llm = OpenAI(temperature=0.2, openai_api_key=openai_api_key)
+        self.llm = VertexAI(model_name="code-bison", max_output_tokens=100, temperature=0.1)
 
         self.chat_history = None
         self.chain = None

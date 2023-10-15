@@ -43,7 +43,7 @@ def read_and_save_file():
     st.session_state["messages"] = []
     st.session_state["user_input"] = ""
     st.session_state["agent"] = Agent(os.getenv("OPENAI_API_KEY"))
-    # for file in st.session_state["file_uploader"]:
+    for file in st.session_state["file_uploader"]:
         with tempfile.NamedTemporaryFile(delete=False) as tf:
             tf.write(file.getbuffer())
             file_path = tf.name

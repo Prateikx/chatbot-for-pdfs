@@ -6,3 +6,7 @@ faiss-cpu
 pypdf
 tiktoken
 python-dotenv
+
+
+# Requirements for Google Cloud VertexAI LLMs
+google-cloud-aiplatform
