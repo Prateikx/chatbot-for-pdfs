@@ -8,7 +8,7 @@ from langchain.llms import VertexAI
 from langchain.chains import ConversationalRetrievalChain
 
 # setting the environment variable `GOOGLE_APPLICATION_CREDENTIALS` to the file path
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "E:\D3VTech\d3v-chat-bot-poc\d3v-sandbox-364105-4d1d086de08a.json"
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = os.environ["credentials"]
 
 
 class Agent:
