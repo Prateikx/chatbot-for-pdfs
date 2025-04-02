@@ -4,7 +4,8 @@ from langchain.document_loaders import PyPDFLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.vectorstores import FAISS
 from langchain.llms import VertexAI
-from langchain.chains import ConversationalRetrievalChain
+from langchain.chains import ConversationalRetrievalChai
+from dotenv import load_dotenv
 
 # setting the environment variable `GOOGLE_APPLICATION_CREDENTIALS` to the file path
 credentials_path = os.environ.get("credentials")
