@@ -4,8 +4,21 @@ from langchain.document_loaders import PyPDFLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.vectorstores import FAISS
 from langchain.llms import VertexAI
+from langchain.chains import ConversationalRetrievalChai
+from dotenv import load_dotenv
 
-from langchain.chains import ConversationalRetrievalChain
+# setting the environment variable `GOOGLE_APPLICATION_CREDENTIALS` to the file path
+credentials_path = os.environ.get("credentials")
+if credentials_path:
+    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = credentials_path
+else:
+    # Handle the case where the environment variable is not set
+    # For example, you could raise an exception or use a default value
+    raise ValueError("The 'credentials' environment variable is not set.")
+
+
+# Load variables from .env file
+load_dotenv()
 
 # setting the environment variable `GOOGLE_APPLICATION_CREDENTIALS` to the file path
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = os.environ["credentials"]
